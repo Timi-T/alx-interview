@@ -27,5 +27,3 @@ def pascal_triangle(n):
         #Append the new row to the list of lists
         ret_list.append(row)
     return ret_list
-
-print(pascal_triangle(6))
