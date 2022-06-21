@@ -3,6 +3,7 @@
 Module to solve a lockbox problem
 """
 
+
 def canUnlockAll(boxes):
     """Function to unlock a set of locked boxes"""
     keys_set = {0}
