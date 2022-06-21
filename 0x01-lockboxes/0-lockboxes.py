@@ -11,7 +11,6 @@ def canUnlockAll(boxes):
     present_keys = [] + boxes[0]
 
     for key in present_keys:
-        print(keys_set)
         keys_set.update(boxes[key])
         new_keys = keys_set - set(present_keys)
         present_keys += new_keys
