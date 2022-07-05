@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 """
 Module to parse a log file for statistics
 """
