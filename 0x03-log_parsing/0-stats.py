@@ -5,36 +5,47 @@ The stdin filestream is read for inputs and metrics are
 computed by python
 """
 
+import re
 import sys
 
 
-status_codes = ['200', '301', '400', '401', '403', '404', '405', '500']
-status_code_data = {code: 0 for code in status_codes}
-total_file_size = 0
+i = 1
+filesize = 0
+errors = ["200", "301", "400", "401", "403", "404", "405", "500"]
+error_count = {}
+ip_re = "\b([1-9]|[1-9][0-9]|[1][0-9][0-9]|[2][0-4][0-9]|[2][5][0-5])\b\
+         .\b([1-9]|[1-9][0-9]|[1][0-9][0-9]|[2][0-4][0-9]|[2][5][0-5])\b\
+         .\b([1-9]|[1-9][0-9]|[1][0-9][0-9]|[2][0-4][0-9]|[2][5][0-5])\b\
+         .\b([1-9]|[1-9][0-9]|[1][0-9][0-9]|[2][0-4][0-9]|[2][5][0-5])\b\
+          - "
+datetime_regex = "[\b([1-9][0-9][0-9][0-9])\b-\b([0-9][0-9])\b\
+                  -\b([0-9][0-9])\b \b([0-9][0-9])\b:\b([0-9][0-9])\b:\b\
+                  ([0-9][0-9])\b.\b([0-9][0-9][0-9][0-9][0-9][0-9])\b] "
+url_regex = "\"GET /projects/260 HTTP/1.1\" "
+err_regex = "\b([2][0][0]|[3][0][1]|[4][0][0]|[4][0][1]|[4][0][3]|\
+             [4][0][4]|[4][0][5]|[5][0][0])\b "
+size_regex = "\b([1-9]|[1-9][0-9]|[1-9][0-9][0-9]|[1][0][0-2][0-4])\b"
+line_regex = re.compile(r''.format(ip_re + datetime_regex +
+                        url_regex + err_regex + size_regex))
 try:
-    count = 0
     for line in sys.stdin:
-        splitstr = line.split()
-        print(len(splitstr))
-        if len(splitstr) > 6:
-            total_file_size += int(splitstr[-1])
-            code = splitstr[-2]
-            if code in status_code_data:
-                count += 1
-                status_code_data[code] += 1
-                if count % 10 == 0:
-                    print('File size: {}'.format(total_file_size))
-                    for k, v in sorted(status_code_data.items()):
-                        if v != 0:
-                            print('{}: {}'.format(k, v))
+        is_valid = line_regex.search(line)
+        if is_valid:
+            stats = line.split(' ')
+            filesize += int(stats[-1])
+            if error_count.get(stats[-2]):
+                error_count[stats[-2]] += 1
+            else:
+                error_count[stats[-2]] = 1
+            if (i % 10 == 0):
+                print(f'File size: {filesize}')
+                for err in errors:
+                    if error_count.get(err):
+                        print(f'{err}: {error_count.get(err)}')
+        i += 1
 except KeyboardInterrupt:
-    print('File size: {}'.format(total_file_size))
-    for k, v in sorted(status_code_data.items()):
-        if v != 0:
-            print('{}: {}'.format(k, v))
+    print(f'File size: {filesize}')
+    for err in errors:
+        if error_count.get(err):
+            print(f'{err}: {error_count.get(err)}')
     raise
-else:
-    print('File size: {}'.format(total_file_size))
-    for k, v in sorted(status_code_data.items()):
-        if v != 0:
-            print('{}: {}'.format(k, v))
