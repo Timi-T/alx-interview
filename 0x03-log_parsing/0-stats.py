@@ -50,7 +50,7 @@ except KeyboardInterrupt:
             print('{}: {}'.format(err, error_count.get(err)))
     raise
 else:
-    print(f'File size: {filesize}')
+    print('File size: {}'.format(filesize))
     for err in errors:
         if error_count.get(err):
             print('{}: {}'.format(err, error_count.get(err)))
