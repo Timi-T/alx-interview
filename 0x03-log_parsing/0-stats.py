@@ -1,6 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 Module to parse a log file for statistics
+The stdin filestream is read for inputs and metrics are
+computed by python
 """
 
 import re
