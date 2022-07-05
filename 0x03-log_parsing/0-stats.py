@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 """
 Module to parse a log file for statistics
 """
@@ -41,9 +42,9 @@ try:
                     if error_count.get(err):
                         print(f'{err}: {error_count.get(err)}')
         i += 1
-except KeyboardInterrupt as e:
+except KeyboardInterrupt:
     print(f'File size: {filesize}')
     for err in errors:
         if error_count.get(err):
             print(f'{err}: {error_count.get(err)}')
-    print(e)
+    raise
