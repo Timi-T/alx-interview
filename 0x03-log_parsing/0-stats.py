@@ -41,7 +41,7 @@ try:
                 print('File size: {}'.format(filesize))
                 for err in errors:
                     if error_count.get(err):
-                        print(f'{err}: {error_count.get(err)}')
+                        print('{}: {}'.format(err, error_count.get(err)))
         i += 1
 except KeyboardInterrupt:
     print('File size: {}'.format(filesize))
