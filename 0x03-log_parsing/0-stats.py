@@ -49,3 +49,8 @@ except KeyboardInterrupt:
         if error_count.get(err):
             print(f'{err}: {error_count.get(err)}')
     raise
+else:
+    print(f'File size: {filesize}')
+    for err in errors:
+        if error_count.get(err):
+            print(f'{err}: {error_count.get(err)}')
