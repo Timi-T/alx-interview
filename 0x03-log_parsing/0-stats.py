@@ -3,8 +3,8 @@
 Module to parse a log file for statistics
 """
 
-import sys
 import re
+import sys
 
 
 i = 1
