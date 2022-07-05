@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Log parsing module
+Module to parse a log file for statistics
 """
 
 import sys
