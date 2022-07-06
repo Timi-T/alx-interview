@@ -54,4 +54,3 @@ else:
     for err in errors:
         if error_count.get(err):
             print('{}: {}'.format(err, error_count.get(err)))
-    raise
