@@ -27,7 +27,7 @@ size_regex = "\b([1-9]|[1-9][0-9]|[1-9][0-9][0-9]|[1][0][0-2][0-4])\b"
 line_regex = re.compile(r''.format(ip_re + datetime_regex +
                         url_regex + err_regex + size_regex))
 try:
-    i = 0
+    i = 1
     for line in sys.stdin:
         is_valid = line_regex.search(line)
         if is_valid:
