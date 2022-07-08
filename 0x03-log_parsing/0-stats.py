@@ -33,16 +33,19 @@ try:
         if is_valid:
             i += 1
             stats = line.split(' ')
-            filesize += int(stats[-1])
-            if error_count.get(stats[-2]):
-                error_count[stats[-2]] += 1
-            else:
-                error_count[stats[-2]] = 1
-            if (i % 10 == 0):
-                print('File size: {}'.format(filesize))
-                for err in errors:
-                    if error_count.get(err):
-                        print('{}: {}'.format(err, error_count.get(err)))
+            try:
+                filesize += int(stats[-1])
+                if error_count.get(stats[-2]):
+                    error_count[stats[-2]] += 1
+                else:
+                    error_count[stats[-2]] = 1
+                if (i % 10 == 0):
+                    print('File size: {}'.format(filesize))
+                    for err in errors:
+                        if error_count.get(err):
+                            print('{}: {}'.format(err, error_count.get(err)))
+            except Exception:
+                pass
 except KeyboardInterrupt:
     print('File size: {}'.format(filesize))
     for err in errors:
