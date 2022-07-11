@@ -24,7 +24,7 @@ def validUTF8(data):
             if i + byte_len > len(data):
                 return False
             # Getting the bytes/integers from the data array
-            next_array = data[i: byte_len]
+            next_array = data[i + 1: byte_len + i]
             # Iterate through the new array representing the character
             for j in next_array:
                 ch_bin = format(j, "b").zfill(8)
