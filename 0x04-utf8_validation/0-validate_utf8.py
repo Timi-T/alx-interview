@@ -8,6 +8,9 @@ def validUTF8(data):
     """Function to validate an array of integers in utf-8"""
 
     for i in range(len(data)):
+        # Array element must be an integer
+        if not isinstance(data[i], int):
+            return False
         # When integer is not in the range of valid integers
         if data[i] < 0 or data[i] > 255:
             return False
