@@ -21,7 +21,7 @@ def validUTF8(data):
         if byte_len:
             # Getting the length of the total bytes for the character
             byte_len = len(byte_len)
-            if byte_len == 1 or byte_len > 4:
+            if byte_len > 4:
                 return False
             # If we have a length of byte beyond the length of the array
             if i + byte_len > len(data):
