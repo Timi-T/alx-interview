@@ -7,8 +7,6 @@ Module for utf-8 validation
 def validUTF8(data):
     """Function to validate an array of integers in utf-8"""
 
-    if not data:
-        return False
     for i in range(len(data)):
         # When integer is not in the range of valid integers
         if data[i] < 0 or data[i] > 255:
