@@ -30,7 +30,5 @@ def validUTF8(data):
                 ch_bin = format(j, "b").zfill(8)
                 if ch_bin[0] != "1" or ch_bin[1] != "0":
                     return False
-                else:
-                    return True
             i += byte_len
     return True
