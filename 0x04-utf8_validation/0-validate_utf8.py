@@ -12,8 +12,10 @@ def validUTF8(data):
         if not isinstance(data[i], int):
             return False
         # When integer is not in the range of valid integers
-        if data[i] < 0 or data[i] >= 255:
+        if data[i] < -255 or data[i] >= 255:
             return False
+        if data[i] < 0 and data[i] >= -255:
+            data[i] = data[i] * -1
         # Convert each integer to its binary format
         bin_num = format(data[i], "b").zfill(8)
         # Get the first leading 1's
