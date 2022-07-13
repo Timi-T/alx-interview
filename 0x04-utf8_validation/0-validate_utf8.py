@@ -6,8 +6,8 @@ Module for utf-8 validation
 
 def validUTF8(data):
     """Function to validate an array of integers in utf-8"""
-
-    for i in range(len(data)):
+    i = 0
+    while i < len(data):
         # Array element must be an integer
         if not isinstance(data[i], int):
             return False
@@ -16,6 +16,8 @@ def validUTF8(data):
             return False
         # Convert each integer to its binary format
         bin_num = format(data[i], "b").zfill(8)
+        if bin_num[0] == '1' and bin_num[1] == '0':
+            return False
         # Get the first leading 1's
         byte_len = (bin_num.split('0', 1))[0]
         if byte_len:
@@ -34,4 +36,6 @@ def validUTF8(data):
                 if ch_bin[0] != "1" or ch_bin[1] != "0":
                     return False
             i += byte_len
+        else:
+            i += 1
     return True
