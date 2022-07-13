@@ -16,8 +16,6 @@ def validUTF8(data):
             return False
         # Convert each integer to its binary format
         bin_num = format(data[i], "b").zfill(8)
-        if bin_num[0] == '1' and bin_num[1] == '0':
-            return False
         # Get the first leading 1's
         byte_len = (bin_num.split('0', 1))[0]
         if byte_len:
