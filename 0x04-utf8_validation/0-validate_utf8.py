@@ -33,7 +33,7 @@ def validUTF8(data):
             # Iterate through the new array representing the character
             for j in next_array:
                 ch_bin = format(j, "b").zfill(8)
-                if ch_bin[0] != "1" or ch_bin[1] != "0":
+                if ch_bin[0] != "1" and ch_bin[1] != "0":
                     return False
             i += byte_len
         else:
