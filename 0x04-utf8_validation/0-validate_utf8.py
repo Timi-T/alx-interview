@@ -11,11 +11,11 @@ def validUTF8(data):
         # Array element must be an integer
         if not isinstance(data[i], int):
             return False
-        # When integer is not in the range of valid integers
-        if data[i] < -255 or data[i] >= 255:
-            return False
         # Convert each integer to its binary format
-        bin_num = format(data[i], "b").zfill(8)
+        if data[i] >= 255:
+            bin_num = format(data[i], "b")[-8:]
+        else:
+            bin_num = format(data[i], "b").zfill(8)
         if bin_num[0] == '1' and bin_num[1] == '0':
             return False
         # Get the first leading 1's
