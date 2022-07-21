@@ -8,16 +8,16 @@ import sys
 
 if len(sys.argv) != 2:
     print("Usage: nqueens N")
-    exit(1)
+    sys.exit(1)
 n = sys.argv[1]
 try:
     n = int(n)
     if n < 4:
         print("N must be at least 4")
-        exit(1)
+        sys.exit(1)
 except ValueError:
     print("N must be a number")
-    exit(1)
+    sys.exit(1)
 
 
 def nqueens(n, rows, negD, posD, col_no, row_no, ret_list):
@@ -52,12 +52,13 @@ def nqueens(n, rows, negD, posD, col_no, row_no, ret_list):
             return ret_list
 
 
-i = 0
-while i < n:
-    ret = nqueens(n=n, rows=set(), negD=set(), posD=set(), col_no=0,
-                  row_no=i, ret_list=[])
-    if ret:
-        print(ret)
-        if ret[0][1] == i + 1:
-            i += 1
-    i += 1
+if __name__ == "__main__":
+    i = 0
+    while i < n:
+        ret = nqueens(n=n, rows=set(), negD=set(), posD=set(), col_no=0,
+                    row_no=i, ret_list=[])
+        if ret:
+            print(ret)
+            if ret[0][1] == i + 1:
+                i += 1
+        i += 1
