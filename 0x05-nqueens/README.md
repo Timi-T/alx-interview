@@ -1,0 +1,1 @@
+This repository contains the solution to the popular N Queens algorithm problem in chess
