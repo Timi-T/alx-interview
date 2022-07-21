@@ -56,7 +56,7 @@ if __name__ == "__main__":
     i = 0
     while i < n:
         ret = nqueens(n=n, rows=set(), negD=set(), posD=set(), col_no=0,
-                    row_no=i, ret_list=[])
+                      row_no=i, ret_list=[])
         if ret:
             print(ret)
             if ret[0][1] == i + 1:
