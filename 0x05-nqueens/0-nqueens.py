@@ -20,8 +20,10 @@ except ValueError:
     sys.exit(1)
 
 
-def nqueens(n, rows, negD, posD, col_no, row_no, ret_list):
+def nqueens(this_row, n, rows, negD, posD, col_no, row_no, ret_list):
     """Function to explore all options recursively"""
+    if col_no == 0 and this_row != row_no:
+        return
     while col_no < n:
         placed = False
         while row_no < n:
@@ -38,9 +40,15 @@ def nqueens(n, rows, negD, posD, col_no, row_no, ret_list):
                 placed = True
                 break
         if len(ret_list) == n:
-            return ret_list
-        if col_no == 0 and len(ret_list) == 0:
-            return []
+            print(ret_list)
+            prev_row = (ret_list[-1])[1]
+            rows.remove(prev_row)
+            negD.remove(prev_row - col_no + 1)
+            posD.remove(prev_row + col_no - 1)
+            ret_list.pop(-1)
+            nqueens(this_row, n, rows, negD, posD, col_no - 1, prev_row + 1,
+                    ret_list)
+            return
         if not placed and len(ret_list) < n and len(ret_list) > 0:
             prev_row = (ret_list[-1])[1]
             rows.remove(prev_row)
@@ -48,17 +56,12 @@ def nqueens(n, rows, negD, posD, col_no, row_no, ret_list):
             posD.remove(prev_row + col_no - 1)
             ret_list.pop(-1)
             col_no = col_no - 1
-            nqueens(n, rows, negD, posD, col_no, prev_row + 1, ret_list)
-            return ret_list
+            nqueens(this_row, n, rows, negD, posD, col_no, prev_row + 1,
+                    ret_list)
+            return
+    return
 
 
-if __name__ == "__main__":
-    i = 0
-    while i < n:
-        ret = nqueens(n=n, rows=set(), negD=set(), posD=set(), col_no=0,
-                      row_no=i, ret_list=[])
-        if ret:
-            print(ret)
-            if ret[0][1] == i + 1:
-                i += 1
-        i += 1
+for i in range(n - 1):
+    nqueens(this_row=i, n=n, rows=set(), negD=set(), posD=set(), col_no=0,
+            row_no=i, ret_list=[])
