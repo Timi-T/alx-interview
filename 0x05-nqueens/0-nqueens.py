@@ -6,6 +6,7 @@ N queens algorithm implementation
 import sys
 
 
+sys.setrecursionlimit(5000)
 if len(sys.argv) != 2:
     print("Usage: nqueens N")
     sys.exit(1)
