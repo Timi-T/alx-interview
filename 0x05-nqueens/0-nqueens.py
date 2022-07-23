@@ -62,6 +62,6 @@ def nqueens(this_row, n, rows, negD, posD, col_no, row_no, ret_list):
     return
 
 
-for i in range(n - 1):
+for i in range(n):
     nqueens(this_row=i, n=n, rows=set(), negD=set(), posD=set(), col_no=0,
             row_no=i, ret_list=[])
