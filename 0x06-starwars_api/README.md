@@ -1,0 +1,1 @@
+Using javascript to get the list of all characters of a movie from the star wars API.
