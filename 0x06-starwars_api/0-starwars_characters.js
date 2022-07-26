@@ -1,4 +1,4 @@
-#!/usr/local/bin/node
+#!/usr/bin/node
 /* Module to print all characters of a movie from a starwars movie */
 
 const request = require('request');
