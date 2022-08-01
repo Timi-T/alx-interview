@@ -27,4 +27,3 @@ def rotate_2d_matrix(matrix: List[List[int]]):
             matrix[i][b] = temp
             a += 1
             b -= 1
-    return matrix
