@@ -3,10 +3,8 @@
 Rotate a 2d matrix
 """
 
-from typing import List
 
-
-def rotate_2d_matrix(matrix: List[List[int]]):
+def rotate_2d_matrix(matrix):
     """Function to rotate a 2d matrix in place"""
 
     n = len(matrix)
