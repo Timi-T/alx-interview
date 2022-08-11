@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 def makeChange(coins, total):
+    """Function to calculate minimum change"""
     coins.sort(reverse=True)
     rem = total
     solution = 0
