@@ -2,6 +2,7 @@
 
 """Module to make change given coins and a target value"""
 
+
 def makeChange(coins, total):
     """Function to calculate minimum change"""
     coins.sort(reverse=True)
