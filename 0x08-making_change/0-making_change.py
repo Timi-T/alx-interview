@@ -9,7 +9,7 @@ def makeChange(coins, total):
     solution = 0
     i = 0
     change = 0
-    if not total:
+    if not total or total < 0:
         return 0
     while i < len(coins):
         j = i
