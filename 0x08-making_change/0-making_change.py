@@ -1,8 +1,5 @@
 #!/usr/bin/python3
 
-import math
-
-
 def makeChange(coins, total):
     coins.sort(reverse=True)
     rem = total
@@ -15,7 +12,7 @@ def makeChange(coins, total):
         j = i
         while j < len(coins):
             if coins[j] <= rem:
-                change += math.floor(rem / coins[j])
+                change += int((str(rem / coins[j]).split('.'))[0])
                 rem = rem % coins[j]
                 if rem == 0:
                     if not solution:
