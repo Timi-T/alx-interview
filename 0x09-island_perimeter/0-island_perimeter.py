@@ -29,7 +29,7 @@ def island_perimeter(grid):
                 if i:
                     if not grid[i - 1][j]:
                         sides += 1
-                if j != len(row):
+                if j != len(row) - 1:
                     if not row[j + 1]:
                         sides += 1
                 if i != len(grid) - 1:
