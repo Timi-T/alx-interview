@@ -34,9 +34,9 @@ def isWinner(x, nums):
                 turn += 1
             i += 1
         if turn % 2 == 0:
-            Ben += 1
-        else:
             Maria += 1
+        else:
+            Ben += 1
     if Ben > Maria:
         return 'Ben'
     elif Maria > Ben:
