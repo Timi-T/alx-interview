@@ -16,6 +16,8 @@ def isPrime(num):
 
 def isWinner(x, nums):
     """Function to determine the winner of a game"""
+    if x > len(nums):
+        return None
     Maria = 0
     Ben = 0
     for round in range(x):
@@ -38,8 +40,6 @@ def isWinner(x, nums):
             Maria += 1
         else:
             Ben += 1
-    if x <= 0 or not nums:
-        return None
     if Ben > Maria:
         return 'Ben'
     elif Maria > Ben:
