@@ -19,7 +19,7 @@ def isWinner(x, nums):
     Maria = 0
     Ben = 0
     for round in range(x):
-        turn = 0
+        turn = 1
         options = [n + 1 for n in range(nums[round])]
         i = 1
         while i < len(options):
@@ -33,12 +33,10 @@ def isWinner(x, nums):
                     j += 1
                 turn += 1
             i += 1
-        if turn == 0:
+        if turn % 2 == 0:
             Ben += 1
-        elif turn % 2 == 0:
-            Maria += 1
         else:
-            Ben += 1
+            Maria += 1
     if Ben > Maria:
         return 'Ben'
     elif Maria > Ben:
