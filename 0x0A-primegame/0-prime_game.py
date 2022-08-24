@@ -19,11 +19,8 @@ def isWinner(x, nums):
     Maria = 0
     Ben = 0
     for round in range(x):
-        empty = False
         turn = 0
         options = [n + 1 for n in range(nums[round])]
-        if not options:
-            empty = True
         i = 1
         while i < len(options):
             if isPrime(options[i]):
@@ -36,7 +33,7 @@ def isWinner(x, nums):
                     j += 1
                 turn += 1
             i += 1
-        if turn == 0 and not empty:
+        if turn == 0:
             Ben += 1
         elif turn % 2 == 0:
             Maria += 1
