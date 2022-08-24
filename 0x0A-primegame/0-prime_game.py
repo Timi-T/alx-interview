@@ -32,6 +32,7 @@ def isWinner(x, nums):
                         options.pop(j)
                     j += 1
                 turn += 1
+                i = 0
             i += 1
         if turn % 2 == 0:
             Maria += 1
